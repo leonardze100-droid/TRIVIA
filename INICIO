@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reglamento Oficial - Trivia General Intergrupal 2026-II</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Custom Scrollbar for smooth dashboard experience */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Top Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <button id="sidebar-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-500/30">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-base sm:text-lg leading-tight tracking-tight">Trivia Intergrupal</h1>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Reglamento Oficial 2026-II</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Search & Actions -->
+            <div class="flex items-center space-x-3">
+                <div class="relative hidden sm:block w-64 md:w-80">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                    </span>
+                    <input type="text" id="global-search" placeholder="Buscar artículos, temas, cursos..." class="w-full pl-9 pr-4 py-2 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white transition">
+                </div>
+                <button id="theme-toggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition shadow-sm" title="Cambiar Tema">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto flex flex-col lg:flex-row px-4 sm:px-6 lg:px-8 py-6 gap-6">
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-72 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 transform -translate-x-full lg:translate-x-0 lg:static lg:w-72 lg:rounded-2xl lg:border lg:shadow-sm transition-transform duration-300 flex flex-col h-[calc(100vh-3rem)] lg:h-[calc(100vh-6rem)] lg:sticky lg:top-20">
+            <div class="p-4 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between lg:hidden">
+                <span class="font-bold text-base">Índice del Reglamento</span>
+                <button id="sidebar-close" class="p-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="p-3 sm:hidden">
+                <div class="relative w-full">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                    </span>
+                    <input type="text" id="mobile-search" placeholder="Buscar..." class="w-full pl-8 pr-3 py-1.5 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white">
+                </div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-4 space-y-1" id="nav-links">
+                <div class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 py-1 mb-1">General</div>
+                <a href="#portada" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-home w-5 text-center"></i>
+                    <span>Presentación y Datos</span>
+                </a>
+
+                <div class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 py-1 mt-4 mb-1">Capítulos</div>
+                <a href="#capitulo-1" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-book-open w-5 text-center"></i>
+                    <span>I. Disposiciones Generales</span>
+                </a>
+                <a href="#capitulo-2" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-user-shield w-5 text-center"></i>
+                    <span>II. Organización y Moderación</span>
+                </a>
+                <a href="#capitulo-3" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-users w-5 text-center"></i>
+                    <span>III. Participación de Grupos</span>
+                </a>
+                <a href="#capitulo-4" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-arrows-spin w-5 text-center"></i>
+                    <span>IV. Orden de Participación</span>
+                </a>
+                <a href="#capitulo-5" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-table-cells w-5 text-center"></i>
+                    <span>V. Estructura del Tablero</span>
+                </a>
+                <a href="#capitulo-6" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-hand-pointer w-5 text-center"></i>
+                    <span>VI. Elección de Casillas</span>
+                </a>
+                <a href="#capitulo-7" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-stopwatch w-5 text-center"></i>
+                    <span>VII. Lectura y Desarrollo</span>
+                </a>
+                <a href="#capitulo-8" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-layer-group w-5 text-center"></i>
+                    <span>VIII. Tipos de Preguntas</span>
+                </a>
+                <a href="#capitulo-9" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-circle-check w-5 text-center"></i>
+                    <span>IX. Validez Académica</span>
+                </a>
+                <a href="#capitulo-10" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-calculator w-5 text-center"></i>
+                    <span>X. Sistema de Puntuación</span>
+                </a>
+                <a href="#capitulo-11" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-trophy w-5 text-center"></i>
+                    <span>XI. Victoria y Eliminación</span>
+                </a>
+                <a href="#capitulo-12" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-bolt w-5 text-center"></i>
+                    <span>XII. Empates y Trivia Bala</span>
+                </a>
+                <a href="#capitulo-13" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-file-shield w-5 text-center"></i>
+                    <span>XIII. Validez de Preguntas</span>
+                </a>
+                <a href="#capitulo-14" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-scale-balanced w-5 text-center"></i>
+                    <span>XIV. Reclamos y Controversias</span>
+                </a>
+                <a href="#capitulo-15" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-shield-halved w-5 text-center"></i>
+                    <span>XV. Conducta y Prohibiciones</span>
+                </a>
+                <a href="#capitulo-16" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-triangle-exclamation w-5 text-center"></i>
+                    <span>XVI. Fallas Técnicas</span>
+                </a>
+                <a href="#capitulo-17" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-gavel w-5 text-center"></i>
+                    <span>XVII. Imparcialidad y Fines</span>
+                </a>
+
+                <div class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 py-1 mt-4 mb-1">Anexos y Cierre</div>
+                <a href="#anexo-1" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-list-check w-5 text-center"></i>
+                    <span>Anexo I. Resumen Preguntas</span>
+                </a>
+                <a href="#anexo-2" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-chart-simple w-5 text-center"></i>
+                    <span>Anexo II. Resumen Puntuación</span>
+                </a>
+                <a href="#anexo-3" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-timeline w-5 text-center"></i>
+                    <span>Anexo III. Orden General</span>
+                </a>
+                <a href="#anexo-4" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-bolt-lightning w-5 text-center"></i>
+                    <span>Anexo IV. Trivia Bala</span>
+                </a>
+                <a href="#anexo-5" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-star w-5 text-center"></i>
+                    <span>Anexo V. Principios Básicos</span>
+                </a>
+                <a href="#disposicion-final" class="nav-item flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                    <i class="fa-solid fa-signature w-5 text-center"></i>
+                    <span>Disposición Final y Cierre</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 min-w-0 space-y-8">
+
+            <!-- Hero Portada Card -->
+            <section id="portada" class="bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl pointer-events-none">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div class="relative z-10 max-w-3xl">
+                    <span class="px-3 py-1 bg-indigo-500/30 border border-indigo-400/30 text-indigo-200 text-xs font-semibold rounded-full uppercase tracking-wider">Documento Oficial</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-4 mb-3">TRIVIA GENERAL INTERGRUPAL 2026-II</h2>
+                    <p class="text-indigo-200 text-base sm:text-lg mb-6 font-light">Reglamento oficial que norma la competencia académica entre grupos de estudio, estableciendo dinámicas, puntuaciones, estructura de tableros y criterios de evaluación.</p>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-indigo-700/50">
+                        <div>
+                            <span class="block text-xs text-indigo-300 font-medium">Ciclo Académico</span>
+                            <span class="text-sm font-bold text-white">2026-II</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-indigo-300 font-medium">Moderador General</span>
+                            <span class="text-sm font-bold text-white">Valhir</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-indigo-300 font-medium">Grupos Participantes</span>
+                            <span class="text-sm font-bold text-white">A, B, C, D</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-indigo-300 font-medium">Cursos Evaluados</span>
+                            <span class="text-sm font-bold text-white">5 Categorías</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notification banner for active search -->
+            <div id="search-alert" class="hidden bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 p-4 rounded-2xl flex items-center justify-between text-sm text-indigo-700 dark:text-indigo-300">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-filter"></i>
+                    <span id="search-count-text">Mostrando resultados de búsqueda</span>
+                </div>
+                <button id="clear-search" class="text-xs font-semibold underline hover:text-indigo-900 dark:hover:text-indigo-100">Limpiar búsqueda</button>
+            </div>
+
+            <!-- CHAPTERS CONTAINER -->
+            <div class="space-y-8" id="chapters-container">
+
+                <!-- CAPÍTULO I -->
+                <div id="capitulo-1" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">I</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO I: DISPOSICIONES GENERALES</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Denominación, finalidad, participantes, periodicidad y fuentes académicas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="denominacion actividad competencia academica grupos de estudio">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 1. Denominación</h4>
+                            <p>La presente actividad se denomina <strong>Trivia General Intergrupal 2026-II</strong> y consiste en una competencia académica entre los grupos de estudio participantes.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="finalidad reforzar conocimientos estudio constante comprension razonamiento">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 2. Finalidad</h4>
+                            <p>La Trivia General tiene como finalidad reforzar los conocimientos adquiridos durante el desarrollo de los cursos, promover el estudio constante y fomentar la comprensión, el razonamiento y la aplicación de los conocimientos adquiridos.</p>
+                            <p class="mt-2">Asimismo, busca generar una competencia académica entre los grupos participantes, incentivando a sus integrantes a prepararse continuamente y mejorar su desempeño en los diferentes cursos.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="participantes ciclo 2026-ii grupo a b c d incorporacion">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 3. Participantes</h4>
+                            <p>La Trivia General se desarrollará con la participación de los grupos de estudio correspondientes al ciclo 2026-II.</p>
+                            <p class="mt-2 font-medium text-slate-800 dark:text-slate-200">Para la presente edición participarán:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>Grupo A.</li>
+                                <li>Grupo B.</li>
+                                <li>Grupo C.</li>
+                                <li>Grupo D.</li>
+                            </ul>
+                            <p class="mt-2 text-xs italic">En caso de incorporarse posteriormente otro grupo a la competencia, su participación deberá ser comunicada antes del inicio de la Trivia correspondiente.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="periodicidad cada dos semanas independiente puntuacion acumulativa">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 4. Periodicidad</h4>
+                            <p>La Trivia General se realizará cada dos semanas.</p>
+                            <p class="mt-1">Cada edición será independiente respecto a su desarrollo y puntuación, salvo que posteriormente se establezca un sistema acumulativo entre diferentes ediciones.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="contenido competencia dos semanas anteriores silabo avance">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 5. Contenido de la competencia</h4>
+                            <p>Las preguntas de cada Trivia deberán corresponder principalmente a los contenidos desarrollados durante las dos semanas anteriores.</p>
+                            <p class="mt-2">Para determinar los contenidos que podrán ser evaluados se tomará como referencia el avance de cada curso establecido en el sílabo correspondiente.</p>
+                            <p class="mt-2">No se evaluarán contenidos que aún no hayan sido desarrollados durante el periodo establecido.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="cursos participantes anatomia fisiologia bioquimica primeros auxilios emergencias inmunologia niveles">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 6. Cursos participantes</h4>
+                            <p>La Trivia General estará conformada por cinco categorías correspondientes a los siguientes cursos:</p>
+                            <ol class="list-decimal pl-5 mt-2 space-y-1 font-medium text-slate-800 dark:text-slate-200">
+                                <li>Anatomía.</li>
+                                <li>Fisiología.</li>
+                                <li>Bioquímica.</li>
+                                <li>Primeros Auxilios y Emergencias.</li>
+                                <li>Inmunología.</li>
+                            </ol>
+                            <p class="mt-2">Cada categoría contará con seis niveles de puntuación.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="fuentes elaboracion preguntas amboss villamed qx medic libros material academico">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 7. Fuentes para la elaboración de preguntas</h4>
+                            <p>Las preguntas podrán ser elaboradas tomando como referencia diferentes fuentes académicas, entre ellas:</p>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+                                <span class="px-3 py-1.5 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold flex items-center"><i class="fa-solid fa-book mr-2"></i> AMBOSS</span>
+                                <span class="px-3 py-1.5 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold flex items-center"><i class="fa-solid fa-book mr-2"></i> VillaMed</span>
+                                <span class="px-3 py-1.5 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold flex items-center"><i class="fa-solid fa-book mr-2"></i> Qx Medic</span>
+                                <span class="px-3 py-1.5 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold flex items-center"><i class="fa-solid fa-book mr-2"></i> Libros de referencia</span>
+                                <span class="px-3 py-1.5 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold flex items-center"><i class="fa-solid fa-book mr-2"></i> Material académico</span>
+                                <span class="px-3 py-1.5 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold flex items-center"><i class="fa-solid fa-book mr-2"></i> Otras fuentes</span>
+                            </div>
+                            <p class="mt-3 text-xs italic">La fuente utilizada deberá permitir verificar la respuesta correcta cuando exista algún reclamo relacionado con el contenido científico de una pregunta.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="criterios generales elaboracion dificultad progresiva valor tablero interpretacion razonamiento clinico">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 8. Criterios generales de elaboración</h4>
+                            <p>Las preguntas deberán guardar relación entre el nivel de dificultad correspondiente y el valor asignado dentro del tablero.</p>
+                            <p class="mt-1">La dificultad deberá aumentar progresivamente desde las preguntas de 100 puntos hasta las preguntas de 600 puntos.</p>
+                            <p class="mt-1">Las preguntas de mayor valor podrán requerir interpretación, integración de conocimientos, razonamiento clínico o aplicación de conceptos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO II -->
+                <div id="capitulo-2" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">II</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO II: ORGANIZACIÓN Y MODERACIÓN</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Moderador general, funciones, imparcialidad y autoridad</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="moderador general dirigir competencia cumplimiento reglamento elaboracion preguntas">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 9. Moderador general</h4>
+                            <p>La Trivia General contará con un moderador general encargado de dirigir la competencia y garantizar el cumplimiento del presente reglamento.</p>
+                            <p class="mt-1">El moderador será responsable de la elaboración y selección de las preguntas, así como de la conducción general de la actividad.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="funciones del moderador preparar preguntas categorias tablero cronometrar puntajes resolver reclamos">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 10. Funciones del moderador</h4>
+                            <p>Corresponde al moderador:</p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 font-medium text-slate-700 dark:text-slate-300">
+                                <li class="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>a) Preparar y seleccionar preguntas.</span></li>
+                                <li class="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>b) Organizar categorías y valores.</span></li>
+                                <li class="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>c) Leer preguntas y alternativas.</span></li>
+                                <li class="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>d) Controlar tiempos y cronómetros.</span></li>
+                                <li class="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>e) Controlar orden de participación.</span></li>
+                                <li class="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>f) Registrar y actualizar puntajes.</span></li>
+                                <li class="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>g) Determinar si es correcto o incorrecto.</span></li>
+                                <li class="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>h) Resolver reclamos presentados.</span></li>
+                                <li class="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>i) Aplicar reglas de victoria y desempate.</span></li>
+                                <li class="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>j) Resolver situaciones no previstas.</span></li>
+                            </ul>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="imparcialidad del moderador conducta neutral sin favorecer ni perjudicar reglas iguales">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 11. Imparcialidad del moderador</h4>
+                            <p>El moderador deberá mantener una conducta imparcial durante todo el desarrollo de la competencia.</p>
+                            <p class="mt-1">Las reglas deberán aplicarse de la misma manera para todos los grupos participantes, evitando favorecer o perjudicar deliberadamente a alguno de ellos.</p>
+                            <p class="mt-1">El moderador no podrá modificar reglas, puntuaciones, tiempos o procedimientos con la finalidad de beneficiar o perjudicar a un grupo determinado.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="autoridad del moderador dirigir competencia decisiones sustentadas reclamo justificado">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 12. Autoridad del moderador</h4>
+                            <p>El moderador tendrá la responsabilidad de dirigir el desarrollo de la competencia y hacer cumplir las disposiciones establecidas en el presente reglamento.</p>
+                            <p class="mt-1">Sus decisiones deberán estar sustentadas en las reglas establecidas y podrán ser objeto de reclamo cuando exista una causa justificada conforme al procedimiento correspondiente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO III -->
+                <div id="capitulo-3" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">III</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO III: PARTICIPACIÓN DE LOS GRUPOS</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Integrantes mínimos, W.O., llegada tardía, retiro e incorporación</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="numero minimo integrantes dos presentes sin limite maximo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 13. Número mínimo de integrantes</h4>
+                            <p>Para participar en la Trivia, cada grupo deberá contar con un mínimo de dos integrantes presentes.</p>
+                            <p class="mt-1">No se establece un número máximo de integrantes para la conformación del grupo participante, siempre que todos pertenezcan oficialmente al grupo correspondiente.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="wo walk over ningun integrante presente un integrante ausente">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 14. W.O.</h4>
+                            <p>Se declarará W.O. al grupo que, al momento de iniciar la competencia:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>a) No tenga ningún integrante presente.</li>
+                                <li>b) Cuente únicamente con un integrante presente.</li>
+                            </ul>
+                            <p class="mt-2 text-xs italic">Un grupo declarado W.O. no podrá completar posteriormente su participación mediante integrantes pertenecientes a otro grupo.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="llegada tardia incorporarse normalmente sin penalizacion">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 15. Llegada tardía</h4>
+                            <p>Los integrantes de un grupo que lleguen después del inicio de la Trivia podrán incorporarse normalmente a su equipo.</p>
+                            <p class="mt-1">La llegada tardía no generará ninguna penalización siempre que el integrante pertenezca oficialmente al grupo correspondiente.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="retiro de integrantes motivos personales academicos familiares permanencia de dos">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 16. Retiro de integrantes</h4>
+                            <p>Un integrante podrá retirarse durante la competencia por motivos personales, académicos, familiares o cualquier otra circunstancia.</p>
+                            <p class="mt-1">El retiro de uno o más integrantes no ocasionará la eliminación inmediata del grupo mientras permanezcan al menos dos integrantes del mismo grupo presentes.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="incorporacion posterior integrantes tercer integrante llega despues">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 17. Incorporación posterior de integrantes</h4>
+                            <p>Cuando un grupo haya iniciado la competencia con al menos dos integrantes, podrá incorporarse posteriormente cualquier integrante que pertenezca oficialmente al mismo grupo.</p>
+                            <p class="mt-1 text-xs italic">Por ejemplo, si un grupo inicia con dos integrantes y posteriormente llega un tercer integrante perteneciente a dicho grupo, este podrá incorporarse normalmente.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="prohibicion incorporacion integrantes de otros grupos ilegal temporal permanente">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 18. Prohibición de incorporación de integrantes de otros grupos</h4>
+                            <p>No se permitirá que un grupo incorpore temporal o permanentemente integrantes pertenecientes a otro grupo con la finalidad de cumplir el mínimo requerido o mejorar su participación.</p>
+                            <p class="mt-1">Cada participante deberá representar únicamente al grupo al cual pertenece.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="perdida del minimo de integrantes menos de dos moderador verifica retiro">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 19. Pérdida del mínimo de integrantes</h4>
+                            <p>Si durante la competencia un grupo queda con menos de dos integrantes debido al retiro de sus miembros, el moderador deberá verificar la situación.</p>
+                            <p class="mt-1">Si no se reincorpora un integrante perteneciente al mismo grupo y el equipo permanece con un solo integrante, podrá declararse su retiro de la competencia conforme a las reglas establecidas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO IV -->
+                <div id="capitulo-4" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">IV</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO IV: DETERMINACIÓN DEL ORDEN DE PARTICIPACIÓN</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Ruleta virtual, secuencia de turnos y fallas técnicas</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="ruleta virtual orden inicial seleccion casillas tablero">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 20. Ruleta virtual</h4>
+                            <p>Antes de iniciar la Trivia se utilizará una ruleta virtual con la finalidad de determinar el orden en el que los grupos podrán seleccionar las casillas disponibles del tablero.</p>
+                            <p class="mt-1">La ruleta será utilizada una sola vez y su resultado establecerá el orden inicial de participación.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="determinacion del orden primero segundo tercero cuarto grupo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 21. Determinación del orden</h4>
+                            <p>El resultado obtenido mediante la ruleta establecerá el orden de participación de la siguiente manera:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>El grupo que aparezca en primer lugar será el primero en seleccionar una casilla.</li>
+                                <li>El grupo que aparezca en segundo lugar será el segundo en seleccionar.</li>
+                                <li>El grupo que aparezca en tercer lugar será el tercero en seleccionar.</li>
+                                <li>El grupo que aparezca en cuarto lugar será el cuarto en seleccionar.</li>
+                            </ul>
+                            <p class="mt-2 text-xs italic">En caso de participar una cantidad mayor de grupos, se continuará con el mismo criterio hasta completar el orden correspondiente.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="validez resultado de la ruleta observable claramente sin desacuerdo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 22. Validez del resultado de la ruleta</h4>
+                            <p>El resultado de la ruleta será considerado válido siempre que pueda observarse claramente el orden obtenido.</p>
+                            <p class="mt-1">No podrá solicitarse una nueva ruleta únicamente por desacuerdo con el resultado obtenido.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="fallo de la ruleta problema tecnico repetir mecanismo aleatorio">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 23. Fallo de la ruleta</h4>
+                            <p>Si la ruleta virtual presenta un problema técnico que impida determinar correctamente el resultado, el procedimiento deberá repetirse.</p>
+                            <p class="mt-1">En caso de persistir la falla, el moderador podrá utilizar otro mecanismo aleatorio que permita establecer el orden de manera imparcial.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="desarrollo de los turnos secuencia fija mantenimiento durante toda la trivia">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 24. Desarrollo de los turnos</h4>
+                            <p>Una vez establecido el orden de participación, los grupos deberán intervenir respetando la secuencia determinada.</p>
+                            <p class="mt-1">Cuando finalice el turno del último grupo, corresponderá nuevamente el turno al primer grupo, manteniéndose el mismo orden durante toda la competencia.</p>
+                            <p class="mt-1">La secuencia continuará hasta que se produzca alguna de las condiciones establecidas para la finalización de la Trivia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO V -->
+                <div id="capitulo-5" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">V</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO V: ESTRUCTURA DEL TABLERO</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Composición de 30 casillas, categorías y correspondencia de dificultad</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="composicion del tablero 5 categorias 6 niveles 30 casillas">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 25. Composición del tablero</h4>
+                            <p>El tablero estará conformado por cinco categorías y seis niveles de puntuación, formando un total de treinta casillas disponibles.</p>
+                            <p class="mt-2 font-medium text-slate-800 dark:text-slate-200">La estructura del tablero será la siguiente:</p>
+                            
+                            <!-- Responsive Table -->
+                            <div class="overflow-x-auto mt-3">
+                                <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-indigo-50 dark:bg-slate-900 text-indigo-900 dark:text-indigo-300 border-b border-indigo-200 dark:border-slate-700">
+                                            <th class="p-2.5 font-bold">Valor</th>
+                                            <th class="p-2.5 font-bold">Nivel</th>
+                                            <th class="p-2.5 font-bold">Tipo de pregunta</th>
+                                            <th class="p-2.5 font-bold">Alternativas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">100</td>
+                                            <td class="p-2.5">Básico</td>
+                                            <td class="p-2.5">Pregunta básica</td>
+                                            <td class="p-2.5">5</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">200</td>
+                                            <td class="p-2.5">Intermedio</td>
+                                            <td class="p-2.5">Pregunta intermedia</td>
+                                            <td class="p-2.5">5</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">300</td>
+                                            <td class="p-2.5">Intermedio-alto</td>
+                                            <td class="p-2.5">Pregunta de mayor dificultad</td>
+                                            <td class="p-2.5">5</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">400</td>
+                                            <td class="p-2.5">Clínico</td>
+                                            <td class="p-2.5">Caso clínico</td>
+                                            <td class="p-2.5">5</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">500</td>
+                                            <td class="p-2.5">Clínico avanzado</td>
+                                            <td class="p-2.5">Caso clínico complejo</td>
+                                            <td class="p-2.5">7-8</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">600</td>
+                                            <td class="p-2.5">Alta dificultad</td>
+                                            <td class="p-2.5">Caso clínico complejo o pregunta abierta</td>
+                                            <td class="p-2.5">7-8 / abierta</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="casillas disponibles seleccionada una sola vez eliminada despues de uso">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 26. Casillas disponibles</h4>
+                            <p>Cada casilla del tablero podrá ser seleccionada únicamente una vez.</p>
+                            <p class="mt-1">Después de ser utilizada, la casilla quedará eliminada del tablero y no podrá ser seleccionada nuevamente por ningún grupo.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="correspondencia entre valor y dificultad cantidad puntos penalizacion incremento">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 27. Correspondencia entre valor y dificultad</h4>
+                            <p>El valor asignado a cada casilla representa la cantidad de puntos que puede obtener el grupo y también la penalización que puede recibir en caso de una respuesta incorrecta.</p>
+                            <p class="mt-1">El aumento del valor deberá corresponder, en términos generales, a un incremento en la dificultad de la pregunta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO VI -->
+                <div id="capitulo-6" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">VI</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO VI: ELECCIÓN DE CASILLAS</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Tiempo de 10 segundos, selección válida y prohibición de cambio</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="tiempo para escoger diez segundos maximo inicio periodo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 28. Tiempo para escoger</h4>
+                            <p>Cuando corresponda el turno de un grupo, este contará con un tiempo máximo de diez segundos para seleccionar una casilla disponible.</p>
+                            <p class="mt-1">El tiempo comenzará cuando el moderador indique el inicio del periodo de elección.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="seleccion valida categoria valor anatomia 400 definitivo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 29. Selección válida</h4>
+                            <p>La selección deberá indicar claramente:</p>
+                            <ol class="list-decimal pl-5 mt-1 space-y-1">
+                                <li>La categoría correspondiente.</li>
+                                <li>El valor de la casilla elegida.</li>
+                            </ol>
+                            <p class="mt-2 text-xs italic">Ejemplo: "Anatomía, 400".</p>
+                            <p class="mt-1">Una vez comunicada la elección al moderador, esta será considerada válida y no podrá modificarse posteriormente.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="finalizacion del tiempo de eleccion moderador asigna casilla libre">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 30. Finalización del tiempo de elección</h4>
+                            <p>Si el grupo no realiza la selección dentro de los diez segundos establecidos, el moderador podrá asignar una casilla disponible.</p>
+                            <p class="mt-1">La casilla asignada deberá encontrarse libre y será considerada utilizada por dicho grupo.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="cambio de casilla prohibido una vez comunicado oficialmente">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 31. Cambio de casilla</h4>
+                            <p>Una vez comunicada oficialmente la selección, el grupo no podrá cambiar la categoría ni el valor elegido.</p>
+                            <p class="mt-1">No será válido indicar posteriormente que se deseaba seleccionar una casilla diferente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO VII -->
+                <div id="capitulo-7" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">VII</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO VII: LECTURA Y DESARROLLO DE LAS PREGUNTAS</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Tiempos de respuesta, discusión grupal y respuesta oficial</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="lectura de la pregunta moderador completa alternativas antes de cronometro">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 32. Lectura de la pregunta</h4>
+                            <p>El moderador deberá leer completamente la pregunta antes de iniciar el tiempo de respuesta.</p>
+                            <p class="mt-1">Cuando la pregunta incluya alternativas, deberá leer todas las opciones antes de iniciar el cronómetro.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="inicio del tiempo de respuesta despues de lectura completa no se descuenta">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 33. Inicio del tiempo de respuesta</h4>
+                            <p>El tiempo para responder comenzará únicamente después de que el moderador haya finalizado la lectura completa de la pregunta y sus alternativas.</p>
+                            <p class="mt-1">El tiempo utilizado durante la lectura no será descontado del tiempo otorgado al grupo participante.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="tiempo de respuesta 100 200 300 400 500 600 segundos cronograma">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 34. Tiempo de respuesta</h4>
+                            <p>El tiempo disponible para responder dependerá del valor de la casilla seleccionada:</p>
+                            
+                            <div class="overflow-x-auto mt-3">
+                                <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-indigo-50 dark:bg-slate-900 text-indigo-900 dark:text-indigo-300 border-b border-indigo-200 dark:border-slate-700">
+                                            <th class="p-2.5 font-bold">Valor de la casilla</th>
+                                            <th class="p-2.5 font-bold">Tiempo de respuesta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">100 puntos</td>
+                                            <td class="p-2.5">15 segundos</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">200 puntos</td>
+                                            <td class="p-2.5">20 segundos</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">300 puntos</td>
+                                            <td class="p-2.5">25 segundos</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">400 puntos</td>
+                                            <td class="p-2.5">40 segundos</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">500 puntos</td>
+                                            <td class="p-2.5">60 segundos</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">600 puntos</td>
+                                            <td class="p-2.5">90 segundos</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="discusion del grupo analisis interno prohibido ayuda externa">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 35. Discusión del grupo</h4>
+                            <p>Durante el tiempo asignado para responder, los integrantes del grupo podrán conversar y analizar internamente la posible respuesta.</p>
+                            <p class="mt-1">La discusión deberá realizarse únicamente entre los integrantes del propio grupo.</p>
+                            <p class="mt-1">No estará permitido solicitar ayuda, pistas o información a personas externas.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="respuesta oficial unica clara definitiva">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 36. Respuesta oficial</h4>
+                            <p>El grupo deberá proporcionar una única respuesta oficial antes de finalizar el tiempo establecido.</p>
+                            <p class="mt-1">La respuesta deberá ser clara para que el moderador pueda identificar la alternativa o solución elegida.</p>
+                            <p class="mt-1">Una vez emitida la respuesta oficial, esta será considerada definitiva.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="prohibicion de modificar respuesta primera emitida dentro del tiempo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 37. Prohibición de modificar la respuesta</h4>
+                            <p>No estará permitido cambiar una respuesta después de haber sido comunicada oficialmente.</p>
+                            <p class="mt-1">No será válida una modificación posterior indicando una alternativa diferente.</p>
+                            <p class="mt-1">La respuesta considerada será únicamente la primera respuesta oficial emitida dentro del tiempo establecido.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="finalizacion del tiempo incorrecta penalizacion automatica">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 38. Finalización del tiempo</h4>
+                            <p>Si el grupo no proporciona una respuesta antes de finalizar el tiempo asignado, la pregunta será considerada incorrecta.</p>
+                            <p class="mt-1">En dicho caso se aplicará la penalización correspondiente al valor de la pregunta.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="extension excepcional del tiempo dificultad extraordinaria analisis complejo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 39. Extensión excepcional del tiempo</h4>
+                            <p>Cuando una pregunta presente una dificultad extraordinaria o requiera un análisis complejo, el moderador podrá otorgar una ampliación excepcional del tiempo.</p>
+                            <p class="mt-1">Esta decisión deberá aplicarse bajo los mismos criterios para situaciones similares y sin beneficiar a ningún grupo determinado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO VIII -->
+                <div id="capitulo-8" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">VIII</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO VIII: TIPOS DE PREGUNTAS</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Preguntas de 100 a 600 puntos, casos clínicos y preguntas abiertas</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="preguntas de 100 puntos basico 5 alternativas conceptos generales">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 40. Preguntas de 100 puntos</h4>
+                            <p>Las preguntas de 100 puntos corresponderán al nivel básico de dificultad y contarán con cinco alternativas de respuesta.</p>
+                            <p class="mt-1">Estarán orientadas principalmente a evaluar conocimientos fundamentales, conceptos generales y aspectos esenciales desarrollados durante los cursos.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="preguntas de 200 puntos intermedio 5 alternativas relacion conceptos">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 41. Preguntas de 200 puntos</h4>
+                            <p>Las preguntas de 200 puntos corresponderán a un nivel intermedio y contarán con cinco alternativas de respuesta.</p>
+                            <p class="mt-1">Podrán requerir la relación entre conceptos, comprensión de contenidos y aplicación básica de conocimientos adquiridos.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="preguntas de 300 puntos intermedio alto 5 alternativas integracion conocimientos">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 42. Preguntas de 300 puntos</h4>
+                            <p>Las preguntas de 300 puntos tendrán una dificultad intermedia-alta y contarán con cinco alternativas de respuesta.</p>
+                            <p class="mt-1">Podrán requerir la integración de conocimientos, interpretación de información y análisis de diferentes conceptos relacionados.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="preguntas de 400 puntos casos clinicos 5 alternativas aplicacion">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 43. Preguntas de 400 puntos</h4>
+                            <p>Las preguntas de 400 puntos estarán orientadas principalmente a la resolución de casos clínicos y contarán con cinco alternativas de respuesta.</p>
+                            <p class="mt-1">Estas preguntas deberán requerir la aplicación de conocimientos para identificar la alternativa más adecuada según la situación planteada.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="preguntas de 500 puntos clinico avanzado 7 8 alternativas complejidad">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 44. Preguntas de 500 puntos</h4>
+                            <p>Las preguntas de 500 puntos corresponderán a casos clínicos de mayor complejidad.</p>
+                            <p class="mt-1">Podrán contar con siete u ocho alternativas de respuesta y requerirán un mayor nivel de análisis, interpretación y aplicación de conocimientos.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="preguntas de 600 puntos alta dificultad abierta criterios fundamentales">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 45. Preguntas de 600 puntos</h4>
+                            <p>Las preguntas de 600 puntos corresponderán al nivel de mayor dificultad dentro de la competencia.</p>
+                            <p class="mt-1">Podrán presentarse como:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>a) Casos clínicos complejos con siete u ocho alternativas de respuesta.</li>
+                                <li>b) Preguntas abiertas.</li>
+                            </ul>
+                            <p class="mt-2 text-xs italic">En el caso de preguntas abiertas, el moderador deberá establecer previamente los criterios fundamentales que deberá contener una respuesta correcta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO IX -->
+                <div id="capitulo-9" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">IX</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO IX: PREGUNTAS Y VALIDEZ ACADÉMICA</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Respuesta correcta única, ambigüedad, error científico y anulación</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="respuesta correcta unica identificable material academico">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 46. Respuesta correcta</h4>
+                            <p>Toda pregunta utilizada durante la Trivia deberá contar con una respuesta correcta claramente identificable.</p>
+                            <p class="mt-1">Cuando la pregunta presente alternativas, deberá existir una única opción correcta, salvo que la naturaleza de la pregunta indique expresamente una situación diferente.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="pregunta ambigua anulada procedimiento">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 47. Pregunta ambigua</h4>
+                            <p>Si una pregunta presenta una ambigüedad que impida determinar claramente la respuesta correcta, podrá ser anulada siguiendo el procedimiento establecido en el presente reglamento.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="error cientifico relevante revision fuente academica">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 48. Error científico</h4>
+                            <p>Si se identifica un error científico relevante que pueda afectar la respuesta de una pregunta, esta podrá ser anulada.</p>
+                            <p class="mt-1">La decisión deberá basarse en la revisión de la fuente académica utilizada o en información científica sustentada.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="anulacion de una pregunta sin puntos ni descuento reemplazo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 49. Anulación de una pregunta</h4>
+                            <p>Cuando una pregunta sea anulada:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>No se otorgarán puntos.</li>
+                                <li>No se descontarán puntos.</li>
+                                <li>El resultado de la pregunta no afectará el marcador.</li>
+                                <li>El moderador podrá reemplazarla por otra pregunta del mismo valor.</li>
+                            </ul>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="continuidad de la competencia sin afectar innecesariamente">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 50. Continuidad de la competencia</h4>
+                            <p>La anulación de una pregunta no deberá afectar innecesariamente el desarrollo de la Trivia.</p>
+                            <p class="mt-1">Cuando sea posible, la pregunta anulada será reemplazada por otra de valor y dificultad similar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO X -->
+                <div id="capitulo-10" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">X</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO X: SISTEMA DE PUNTUACIÓN</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Puntuación positiva, penalización negativa y actualización de marcador</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="puntuacion positiva respuestas correctas +100 +200 +300 +400 +500 +600">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 51. Puntuación positiva</h4>
+                            <p>Las respuestas correctas otorgarán al grupo participante el valor correspondiente a la casilla seleccionada.</p>
+                            
+                            <div class="overflow-x-auto mt-3">
+                                <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-indigo-50 dark:bg-slate-900 text-indigo-900 dark:text-indigo-300 border-b border-indigo-200 dark:border-slate-700">
+                                            <th class="p-2.5 font-bold">Valor de la casilla</th>
+                                            <th class="p-2.5 font-bold">Respuesta correcta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">100 puntos</td>
+                                            <td class="p-2.5 text-emerald-600 font-bold">+100</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">200 puntos</td>
+                                            <td class="p-2.5 text-emerald-600 font-bold">+200</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">300 puntos</td>
+                                            <td class="p-2.5 text-emerald-600 font-bold">+300</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">400 puntos</td>
+                                            <td class="p-2.5 text-emerald-600 font-bold">+400</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">500 puntos</td>
+                                            <td class="p-2.5 text-emerald-600 font-bold">+500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">600 puntos</td>
+                                            <td class="p-2.5 text-emerald-600 font-bold">+600</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="puntuacion negativa penalizacion debajo de cero sin limite minimo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 52. Puntuación negativa</h4>
+                            <p>Las respuestas incorrectas tendrán una penalización equivalente al valor de la casilla seleccionada.</p>
+                            
+                            <div class="overflow-x-auto mt-3">
+                                <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-indigo-50 dark:bg-slate-900 text-indigo-900 dark:text-indigo-300 border-b border-indigo-200 dark:border-slate-700">
+                                            <th class="p-2.5 font-bold">Valor de la casilla</th>
+                                            <th class="p-2.5 font-bold">Respuesta incorrecta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">100 puntos</td>
+                                            <td class="p-2.5 text-rose-600 font-bold">-100</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">200 puntos</td>
+                                            <td class="p-2.5 text-rose-600 font-bold">-200</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">300 puntos</td>
+                                            <td class="p-2.5 text-rose-600 font-bold">-300</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">400 puntos</td>
+                                            <td class="p-2.5 text-rose-600 font-bold">-400</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">500 puntos</td>
+                                            <td class="p-2.5 text-rose-600 font-bold">-500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-bold text-indigo-600 dark:text-indigo-400">600 puntos</td>
+                                            <td class="p-2.5 text-rose-600 font-bold">-600</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="mt-3">La puntuación negativa podrá disminuir el marcador del grupo por debajo de cero. No existirá un límite mínimo de puntuación.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="ausencia de respuesta incorrecta penalizacion">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 53. Ausencia de respuesta</h4>
+                            <p>La falta de una respuesta dentro del tiempo establecido será considerada como respuesta incorrecta y tendrá la misma penalización correspondiente al valor de la pregunta.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="registro de puntuaciones moderador actualiza despues de cada pregunta corregir error">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 54. Registro de puntuaciones</h4>
+                            <p>El marcador deberá actualizarse después de cada pregunta desarrollada.</p>
+                            <p class="mt-1">El moderador deberá verificar que la puntuación registrada corresponda al resultado oficialmente determinado.</p>
+                            <p class="mt-1">En caso de identificarse un error en el registro, deberá corregirse antes de continuar con la competencia, siempre que sea posible determinar objetivamente el puntaje correcto.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO XI -->
+                <div id="capitulo-11" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">XI</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO XI: VICTORIA, ELIMINACIÓN Y FINALIZACIÓN</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Margen de 900 puntos, victoria automática, agotamiento del tablero y clasificación</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="victoria automatica ventaja igual superior 900 puntos segundo lugar">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 55. Victoria automática</h4>
+                            <p>Un grupo podrá obtener la victoria antes de finalizar todas las casillas disponibles cuando alcance una ventaja igual o superior a 900 puntos respecto al segundo grupo ubicado en la clasificación.</p>
+                            <p class="mt-1">La condición deberá cumplirse considerando la puntuación del grupo inmediatamente superior.</p>
+                            <p class="mt-2 text-xs italic">Ejemplo: Grupo A: 1800 puntos, Grupo C: 800 puntos, Grupo D: 200 puntos, Grupo B: -100 puntos. En este caso, el Grupo A obtiene la victoria automática debido a que mantiene una diferencia de 1000 puntos respecto al segundo lugar.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="eliminacion automatica diferencia negativa igual superior 900 puntos">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 56. Eliminación automática</h4>
+                            <p>Un grupo podrá quedar eliminado cuando la diferencia negativa respecto al grupo inmediatamente superior sea igual o superior a 900 puntos y dicha diferencia determine que ya no pueda continuar en igualdad de condiciones dentro de la competencia.</p>
+                            <p class="mt-1">La eliminación deberá ser comunicada oficialmente por el moderador.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="finalidad del margen de 900 puntos valor maximo pregunta definicion anticipada">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 57. Finalidad del margen de 900 puntos</h4>
+                            <p>El margen de 900 puntos se establece considerando el valor máximo disponible de una pregunta dentro del sistema de puntuación.</p>
+                            <p class="mt-1">Su finalidad es permitir una definición anticipada cuando exista una ventaja considerable que haga innecesario prolongar la competencia.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="ausencia de ventaja suficiente diferencias menores a 900 puntos">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 58. Ausencia de ventaja suficiente</h4>
+                            <p>No se aplicará una victoria o eliminación automática cuando las diferencias entre posiciones consecutivas sean menores a 900 puntos.</p>
+                            <p class="mt-2 text-xs italic">Ejemplo: Grupo A: 800 puntos, Grupo C: 600 puntos, Grupo D: 0 puntos, Grupo B: -200 puntos. En este caso no corresponde aplicar victoria ni eliminación automática debido a que ninguna diferencia alcanza los 900 puntos.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="finalizacion por agotamiento del tablero todas casillas utilizadas puntuacion acumulada">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 59. Finalización por agotamiento del tablero</h4>
+                            <p>Si todas las casillas disponibles son utilizadas y ningún grupo obtiene victoria o eliminación automática, la competencia finalizará por agotamiento del tablero.</p>
+                            <p class="mt-1">La clasificación final se determinará según la puntuación acumulada.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="clasificacion final primer lugar segundo tercer lugar sin empate">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 60. Clasificación final</h4>
+                            <p>Cuando no exista empate, la clasificación se establecerá de acuerdo con la puntuación obtenida por cada grupo:</p>
+                            <ol class="list-decimal pl-5 mt-1 space-y-1 font-medium text-slate-800 dark:text-slate-200">
+                                <li>Primer lugar: mayor puntuación.</li>
+                                <li>Segundo lugar: segunda mayor puntuación.</li>
+                                <li>Tercer lugar: tercera mayor puntuación.</li>
+                                <li>Y así sucesivamente.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO XII -->
+                <div id="capitulo-12" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">XII</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO XII: EMPATES Y TRIVIA BALA</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Instancia de desempate, banco de preguntas, sistema de activación y reglas</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="aplicacion de la trivia bala misma puntuacion desempate objetivo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 61. Aplicación de la Trivia Bala</h4>
+                            <p>Cuando dos o más grupos finalicen la competencia con la misma puntuación y dicho empate afecte una posición dentro de la clasificación final, se realizará una instancia de desempate denominada <strong>Trivia Bala</strong>.</p>
+                            <p class="mt-1">La Trivia Bala tendrá como finalidad determinar de manera objetiva el orden correspondiente entre los grupos empatados.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="banco de preguntas trivia bala cinco preguntas cursos clinicos breves">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 62. Banco de preguntas de la Trivia Bala</h4>
+                            <p>Antes del inicio de la competencia, el moderador deberá contar con un banco de cinco preguntas destinadas exclusivamente para la Trivia Bala.</p>
+                            <p class="mt-1">Cada pregunta corresponderá a uno de los siguientes cursos:</p>
+                            <ol class="list-decimal pl-5 mt-1 space-y-1">
+                                <li>Anatomía.</li>
+                                <li>Fisiología.</li>
+                                <li>Bioquímica.</li>
+                                <li>Primeros Auxilios y Emergencias.</li>
+                                <li>Inmunología.</li>
+                            </ol>
+                            <p class="mt-2">Las preguntas deberán estar orientadas principalmente a casos clínicos breves o preguntas de respuesta rápida, permitiendo una resolución ágil.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="seleccion de cursos cara o sello ganador dos cursos perdedor uno">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 63. Selección de cursos</h4>
+                            <p>Cuando el desempate corresponda únicamente entre dos grupos, se realizará previamente un procedimiento de cara o sello.</p>
+                            <p class="mt-1">El grupo ganador podrá seleccionar dos cursos de los cinco disponibles.</p>
+                            <p class="mt-1">El grupo que pierda seleccionará un curso de los tres cursos restantes.</p>
+                            <p class="mt-1">Los tres cursos seleccionados determinarán las preguntas iniciales que serán utilizadas durante la Trivia Bala.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="orden de las preguntas de la bala moderador determina sin modificar">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 64. Orden de las preguntas de la Bala</h4>
+                            <p>El moderador será responsable de determinar el orden en que serán presentadas las preguntas seleccionadas.</p>
+                            <p class="mt-1">Una vez realizada la selección de cursos, estos no podrán ser modificados.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="sistema de activacion boton primer registro senal derecho a responder">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 65. Sistema de activación</h4>
+                            <p>Cada pregunta de la Trivia Bala contará con un mecanismo de activación para determinar qué grupo tendrá el derecho de responder.</p>
+                            <p class="mt-1">La primera persona en activar correctamente el botón o mecanismo establecido podrá responder la pregunta.</p>
+                            <p class="mt-1">La activación válida será determinada por el primer registro de señal correspondiente.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="respuesta inmediata sin tiempo adicional demora injustificada penalizacion">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 66. Respuesta inmediata</h4>
+                            <p>La persona que active primero deberá proporcionar su respuesta inmediatamente.</p>
+                            <p class="mt-1">No estará permitido utilizar un tiempo adicional para deliberar después de haber realizado la activación.</p>
+                            <p class="mt-1">Si la persona demora injustificadamente, comienza a analizar, manifiesta duda prolongada o no responde inmediatamente, se considerará inválida y se penalizará.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="puntuacion de la trivia bala correcta +1 incorrecta -1">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 67. Puntuación de la Trivia Bala</h4>
+                            <p>Cada pregunta desarrollada durante la Trivia Bala tendrá la siguiente puntuación:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>Respuesta correcta: <strong class="text-emerald-600">+1 punto</strong>.</li>
+                                <li>Respuesta incorrecta: <strong class="text-rose-600">-1 punto</strong>.</li>
+                                <li>Activación seguida de respuesta inválida por demora: <strong class="text-rose-600">-1 punto</strong>.</li>
+                            </ul>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="ausencia inicial de respuesta 10 segundos adicionales regla pasividad">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 68. Ausencia inicial de respuesta</h4>
+                            <p>Si ninguno de los grupos activa inicialmente el mecanismo de respuesta, se otorgará un periodo adicional de 10 segundos para que cualquiera pueda responder.</p>
+                            <p class="mt-1">Si ningún grupo responde durante este periodo adicional, se aplicará la regla de pasividad.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="pasividad selecciono curso -1 contrario +1">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 69. Pasividad</h4>
+                            <p>Cuando ninguno de los grupos proporcione una respuesta durante el periodo adicional de 10 segundos:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>El grupo que seleccionó el curso correspondiente recibirá <strong class="text-rose-600">-1 punto</strong>.</li>
+                                <li>El grupo contrario recibirá <strong class="text-emerald-600">+1 punto</strong>.</li>
+                            </ul>
+                            <p class="mt-1 text-xs italic">Esta regla será aplicada únicamente cuando ningún grupo haya emitido una respuesta válida.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="respuesta incorrecta en la trivia bala penalizacion -1 punto">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 70. Respuesta incorrecta en la Trivia Bala</h4>
+                            <p>Cuando un grupo active primero el mecanismo de respuesta y proporcione una respuesta incorrecta, recibirá una penalización de <strong class="text-rose-600">-1 punto</strong>.</p>
+                            <p class="mt-1">La penalización será aplicada independientemente de si el error se produjo por desconocimiento, confusión o una elección incorrecta.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="finalizacion de la trivia bala comparacion tres preguntas iniciales">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 71. Finalización de la Trivia Bala</h4>
+                            <p>Después de desarrollarse las tres preguntas iniciales, se compararán los resultados obtenidos por los grupos participantes.</p>
+                            <p class="mt-1">El grupo que obtenga la mayor puntuación será declarado ganador del desempate.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="empate dentro de la trivia bala preguntas adicionales">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 72. Empate dentro de la Trivia Bala</h4>
+                            <p>Si después de las tres preguntas iniciales los grupos permanecen empatados, se continuarán realizando preguntas adicionales de desempate.</p>
+                            <p class="mt-1">Estas preguntas mantendrán el mismo sistema de activación y puntuación establecido para la Trivia Bala hasta que exista un ganador.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="mas de dos grupos empatados sucesiva orden definitivo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 73. Más de dos grupos empatados</h4>
+                            <p>Cuando tres o más grupos finalicen empatados en una misma posición, el moderador deberá organizar el procedimiento de desempate de manera que permita establecer un orden definitivo.</p>
+                            <p class="mt-1">La Trivia Bala podrá desarrollarse de forma sucesiva entre los grupos involucrados hasta determinar la clasificación correspondiente sin empates indefinidos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO XIII -->
+                <div id="capitulo-13" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">XIII</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO XIII: VALIDEZ DE LAS PREGUNTAS</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Principio de validez, causales de anulación y efectos</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="principio de validez respuesta correcta material academico referencia">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 74. Principio de validez</h4>
+                            <p>Toda pregunta utilizada durante la Trivia deberá contar con una respuesta correcta que pueda ser determinada de acuerdo con el material académico utilizado como referencia.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="causales de anulacion ninguna correcta multiples correctas error cientifico ambiguedad">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 75. Causales de anulación</h4>
+                            <p>Una pregunta podrá ser anulada cuando se compruebe alguna de las siguientes situaciones:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>a) Ninguna alternativa es correcta cuando la pregunta requiere una única respuesta.</li>
+                                <li>b) Existen dos o más alternativas correctas cuando la pregunta fue elaborada para tener una sola respuesta.</li>
+                                <li>c) Existe un error científico relevante que modifica la respuesta correcta.</li>
+                                <li>d) El enunciado presenta una ambigüedad que impide determinar una respuesta objetiva.</li>
+                                <li>e) Existe un error de formulación que modifica el sentido de la pregunta.</li>
+                                <li>f) La pregunta no corresponde a los contenidos establecidos para el periodo evaluado.</li>
+                            </ul>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="efectos de la anulacion sin puntos sin descuento reemplazo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 76. Efectos de la anulación</h4>
+                            <p>Cuando una pregunta sea anulada:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>No se otorgarán puntos.</li>
+                                <li>No se descontarán puntos.</li>
+                                <li>El resultado de la pregunta no afectará el marcador.</li>
+                                <li>El moderador podrá reemplazar la pregunta anulada por otra del mismo valor y dificultad equivalente.</li>
+                            </ul>
+                            <p class="mt-1">Si el error es detectado después de modificar el puntaje, el marcador deberá ser corregido.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO XIV -->
+                <div id="capitulo-14" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">XIV</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO XIV: RECLAMOS Y CONTROVERSIAS</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Derecho a formular reclamos, momento oportuno y resolución</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="derecho a formular reclamos irregularidad contenido respuesta puntuacion tiempo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 77. Derecho a formular reclamos</h4>
+                            <p>Cualquier grupo participante podrá presentar un reclamo cuando considere que se ha producido alguna irregularidad relacionada con:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>El contenido de una pregunta.</li>
+                                <li>La respuesta considerada correcta.</li>
+                                <li>La puntuación obtenida.</li>
+                                <li>El tiempo establecido.</li>
+                                <li>El procedimiento aplicado.</li>
+                                <li>La lectura de la pregunta.</li>
+                                <li>El funcionamiento de los mecanismos utilizados.</li>
+                                <li>Cualquier otra situación que pueda afectar el desarrollo correcto de la competencia.</li>
+                            </ul>
+                            <p class="mt-2 text-xs italic">El reclamo deberá ser presentado de manera clara y respetuosa por un integrante del grupo.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="momento para presentar un reclamo inmediatamente despues de resultado antes de siguiente">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 78. Momento para presentar un reclamo</h4>
+                            <p>Los reclamos relacionados directamente con una pregunta deberán realizarse inmediatamente después de anunciarse el resultado y antes de iniciar la siguiente pregunta.</p>
+                            <p class="mt-1">Una vez iniciada la siguiente pregunta, não serán considerados reclamos sobre decisiones anteriores, salvo que posteriormente se identifique un error comprobable de registro o procedimiento.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="resolucion de reclamos moderador analiza fuente academica">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 79. Resolución de reclamos</h4>
+                            <p>El moderador analizará el reclamo presentado y, cuando sea necesario, podrá revisar la fuente académica utilizada para la elaboración de la pregunta.</p>
+                            <p class="mt-1 font-medium text-slate-800 dark:text-slate-200">La decisión podrá consistir en:</p>
+                            <ol class="list-decimal pl-5 mt-1 space-y-1">
+                                <li>Mantener el resultado establecido.</li>
+                                <li>Corregir la puntuación.</li>
+                                <li>Anular la pregunta.</li>
+                                <li>Reemplazar la pregunta.</li>
+                                <li>Repetir un procedimiento cuando exista una irregularidad comprobada.</li>
+                            </ol>
+                            <p class="mt-2">La decisión deberá buscar mantener condiciones iguales para todos los grupos participantes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO XV -->
+                <div id="capitulo-15" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">XV</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO XV: CONDUCTA DURANTE LA COMPETENCIA</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Conducta general, prohibiciones, prohibición de recursos externos y comunicación</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="conducta general respeto ambiente academico">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 80. Conducta general</h4>
+                            <p>Todos los participantes deberán mantener una conducta adecuada durante el desarrollo de la competencia.</p>
+                            <p class="mt-1 font-medium text-slate-800 dark:text-slate-200">Se deberá mantener respeto hacia:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>Los demás grupos participantes.</li>
+                                <li>Los integrantes de cada equipo.</li>
+                                <li>El moderador.</li>
+                                <li>Las respuestas emitidas por los participantes.</li>
+                                <li>El desarrollo general de la actividad.</li>
+                            </ul>
+                            <p class="mt-2">La Trivia General deberá desarrollarse dentro de un ambiente académico, respetuoso y orientado al aprendizaje.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="conductas prohibidas gritar pistas interrumpir insultos recursos externos">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 81. Conductas prohibidas</h4>
+                            <p>Durante la competencia no estará permitido realizar las siguientes acciones:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>a) Gritar respuestas destinadas a favorecer o perjudicar a otro grupo.</li>
+                                <li>b) Proporcionar pistas o información deliberada a otro equipo.</li>
+                                <li>c) Interrumpir al moderador durante la lectura de una pregunta.</li>
+                                <li>d) Interferir intencionalmente en la deliberación de otro grupo.</li>
+                                <li>e) Realizar insultos, burlas o expresiones que afecten la participación de otros integrantes.</li>
+                                <li>f) Intentar alterar el funcionamiento de los mecanismos utilizados durante la competencia.</li>
+                                <li>g) Utilizar información externa cuando esta se encuentre prohibida por el reglamento.</li>
+                            </ul>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="uso de recursos externos prohibido celulares internet libros inteligencia artificial">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 82. Uso de recursos externos</h4>
+                            <p>Durante el desarrollo de la Trivia estará prohibido utilizar cualquier medio externo destinado a obtener información para responder las preguntas.</p>
+                            <p class="mt-1 font-medium text-slate-800 dark:text-slate-200">Se consideran recursos externos prohibidos:</p>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+                                <span class="px-2.5 py-1 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-semibold"><i class="fa-solid fa-ban mr-1"></i> Teléfonos celulares</span>
+                                <span class="px-2.5 py-1 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-semibold"><i class="fa-solid fa-ban mr-1"></i> Internet</span>
+                                <span class="px-2.5 py-1 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-semibold"><i class="fa-solid fa-ban mr-1"></i> Libros</span>
+                                <span class="px-2.5 py-1 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-semibold"><i class="fa-solid fa-ban mr-1"></i> Apuntes</span>
+                                <span class="px-2.5 py-1 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-semibold"><i class="fa-solid fa-ban mr-1"></i> Tabletas</span>
+                                <span class="px-2.5 py-1 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-semibold"><i class="fa-solid fa-ban mr-1"></i> Computadoras</span>
+                                <span class="px-2.5 py-1 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-semibold"><i class="fa-solid fa-ban mr-1"></i> Inteligencia artificial</span>
+                                <span class="px-2.5 py-1 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-semibold"><i class="fa-solid fa-ban mr-1"></i> Aplicaciones de consulta</span>
+                                <span class="px-2.5 py-1 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 rounded-lg text-xs font-semibold"><i class="fa-solid fa-ban mr-1"></i> Relojes inteligentes</span>
+                            </div>
+                            <p class="mt-3 text-xs italic">Las respuestas deberán basarse únicamente en los conocimientos de los integrantes del grupo participante.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="comunicacion entre grupos prohibido recibir respuestas de otros">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 83. Comunicación entre grupos</h4>
+                            <p>Los integrantes de un grupo no podrán recibir información, respuestas o indicaciones provenientes de otros grupos durante el tiempo destinado para responder una pregunta.</p>
+                            <p class="mt-1">La comunicación entre grupos únicamente podrá realizarse cuando corresponda a aspectos organizativos de la actividad y no afecte el desarrollo de la competencia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO XVI -->
+                <div id="capitulo-16" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">XVI</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO XVI: FALLAS TÉCNICAS Y SITUACIONES ESPECIALES</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Fallas técnicas, conservación de resultados y repetición de procedimientos</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="fallas tecnicas detener temporalmente cronometro tablero ruleta boton">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 84. Fallas técnicas</h4>
+                            <p>Cuando se presente una falla técnica que pueda afectar el resultado de una pregunta o procedimiento, el moderador podrá detener temporalmente el desarrollo de la competencia hasta solucionar la situación.</p>
+                            <p class="mt-1 font-medium text-slate-800 dark:text-slate-200">Se consideran fallas técnicas, entre otras:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>Problemas con el cronómetro.</li>
+                                <li>Fallas en el tablero.</li>
+                                <li>Problemas con la ruleta virtual.</li>
+                                <li>Fallas del botón o sistema de respuesta.</li>
+                                <li>Pérdida de visualización de una pregunta.</li>
+                                <li>Problemas con el registro de resultados.</li>
+                            </ul>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="conservacion de resultados no invalida automaticamente puntajes anteriores">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 85. Conservación de resultados</h4>
+                            <p>La existencia de una falla técnica no invalidará automáticamente los resultados obtenidos antes de que ocurra dicha situación.</p>
+                            <p class="mt-1">El moderador deberá conservar los puntajes registrados y determinar qué procedimiento fue afectado por la falla presentada.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="repeticion de procedimientos solo la parte afectada sin causa objetiva no">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 86. Repetición de procedimientos</h4>
+                            <p>Cuando una falla técnica impida determinar correctamente el resultado de una pregunta o procedimiento, podrá repetirse únicamente la parte afectada.</p>
+                            <p class="mt-1">No se repetirá una pregunta o procedimiento únicamente por solicitud de un grupo cuando no exista una causa objetiva.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="activacion simultanea del boton reiniciar trivia bala">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 87. Activación simultánea del botón</h4>
+                            <p>Si durante la Trivia Bala el sistema no permite determinar qué grupo realizó primero la activación del botón, la pregunta podrá reiniciarse.</p>
+                            <p class="mt-1">En el reinicio, ambos grupos deberán participar bajo las mismas condiciones establecidas.</p>
+                            <p class="mt-1">La decisión deberá tomarse antes de validar cualquier respuesta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPÍTULO XVII -->
+                <div id="capitulo-17" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">XVII</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CAPÍTULO XVII: IMPARCIALIDAD Y DISPOSICIONES FINALES</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Igualdad de condiciones, situaciones no previstas, objetivo académico y aceptación</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="imparcialidad posicion neutra prohibido modificar deliberadamente">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 88. Imparcialidad</h4>
+                            <p>El moderador deberá mantener una posición imparcial durante toda la competencia.</p>
+                            <p class="mt-1">No podrá modificar deliberadamente preguntas, tiempos, puntuaciones, orden de participación o procedimientos con la finalidad de beneficiar o perjudicar a un grupo determinado.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="igualdad de condiciones mismas reglas excepciones justificadas">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 89. Igualdad de condiciones</h4>
+                            <p>Todos los grupos participantes deberán competir bajo las mismas reglas y condiciones generales.</p>
+                            <p class="mt-1">Las excepciones únicamente podrán aplicarse cuando sean necesarias para solucionar una irregularidad comprobada o resolver una situación técnica o procedimental.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="prohibicion de modificaciones arbitrarias principios imparcialidad transparencia">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 90. Prohibición de modificaciones arbitrarias</h4>
+                            <p>Una vez iniciada la competencia, no podrán realizarse modificaciones destinadas a cambiar injustificadamente las condiciones establecidas.</p>
+                            <p class="mt-1 font-medium text-slate-800 dark:text-slate-200">Toda situación no prevista deberá resolverse considerando los siguientes principios:</p>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+                                <span class="px-2.5 py-1 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold text-center"><i class="fa-solid fa-scale-balanced mr-1"></i> Imparcialidad</span>
+                                <span class="px-2.5 py-1 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold text-center"><i class="fa-solid fa-users mr-1"></i> Igualdad</span>
+                                <span class="px-2.5 py-1 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold text-center"><i class="fa-solid fa-eye mr-1"></i> Transparencia</span>
+                                <span class="px-2.5 py-1 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold text-center"><i class="fa-solid fa-brain mr-1"></i> Razonabilidad</span>
+                                <span class="px-2.5 py-1 bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-xs font-semibold text-center"><i class="fa-solid fa-forward mr-1"></i> Continuidad</span>
+                            </div>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="situaciones no previstas finalidad academica menor afectacion">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 91. Situaciones no previstas</h4>
+                            <p>Cuando se presente una situación que no se encuentre contemplada dentro del presente reglamento, el moderador deberá tomar una decisión considerando la finalidad académica de la Trivia.</p>
+                            <p class="mt-1">La solución adoptada deberá buscar afectar lo menos posible el desarrollo de la competencia y aplicarse bajo el mismo criterio para todos los grupos en situaciones similares.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="objetivo academico estudio comprension aplicacion clinica trabajo en equipo">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 92. Objetivo académico</h4>
+                            <p>La Trivia General tiene como finalidad promover:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>El estudio constante.</li>
+                                <li>La comprensión de los contenidos.</li>
+                                <li>La aplicación clínica del conocimiento.</li>
+                                <li>La competencia académica saludable.</li>
+                                <li>El trabajo en equipo.</li>
+                                <li>La preparación progresiva de los estudiantes.</li>
+                            </ul>
+                            <p class="mt-2 text-xs italic">Por ello, la competencia deberá desarrollarse priorizando el aprendizaje y la preparación académica sobre cualquier diferencia entre participantes.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="aceptacion del reglamento implicito participacion">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 93. Aceptación del reglamento</h4>
+                            <p>La participación de un grupo en la Trivia General Intergrupal 2026-II implica la aceptación de todas las disposiciones establecidas en el presente reglamento.</p>
+                            <p class="mt-1">Todos los participantes deberán conocer las reglas antes del inicio de la competencia.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="entrada en vigencia comunicacion oficial">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 94. Entrada en vigencia</h4>
+                            <p>El presente reglamento entrará en vigencia desde su comunicación oficial a los grupos participantes y será aplicado durante las actividades correspondientes a la Trivia General Intergrupal 2026-II.</p>
+                        </div>
+                        <div class="article-item p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800/60" data-keywords="constancia final posicion grupo puntuacion">
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Artículo 95. Constancia final</h4>
+                            <p>La clasificación obtenida al finalizar la competencia será registrada por el moderador y comunicada oficialmente a los grupos participantes.</p>
+                            <p class="mt-1 font-medium text-slate-800 dark:text-slate-200">El resultado final deberá incluir como mínimo:</p>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li>Posición obtenida.</li>
+                                <li>Grupo participante.</li>
+                                <li>Puntuación final.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANEXOS -->
+                <div class="space-y-6 pt-4">
+                    <div class="border-b border-slate-200 dark:border-slate-700 pb-2">
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white flex items-center">
+                            <i class="fa-solid fa-folder-open text-indigo-600 mr-3"></i> ANEXOS OFICIALES
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Resúmenes de preguntas, tablas de puntuación, orden general y trivia bala</p>
+                    </div>
+
+                    <!-- ANEXO I -->
+                    <div id="anexo-1" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                        <h4 class="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-4 flex items-center">
+                            <i class="fa-solid fa-list-check mr-2"></i> ANEXO I: RESUMEN DEL SISTEMA DE PREGUNTAS
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold text-sm text-slate-900 dark:text-white">Nivel 1</span>
+                                    <span class="px-2.5 py-0.5 bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs font-bold rounded-full">100 pts</span>
+                                </div>
+                                <ul class="text-xs space-y-1 text-slate-600 dark:text-slate-300">
+                                    <li><strong>Tipo:</strong> Básica</li>
+                                    <li><strong>Alternativas:</strong> 5</li>
+                                    <li><strong>Tiempo:</strong> 15 segundos</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold text-sm text-slate-900 dark:text-white">Nivel 2</span>
+                                    <span class="px-2.5 py-0.5 bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs font-bold rounded-full">200 pts</span>
+                                </div>
+                                <ul class="text-xs space-y-1 text-slate-600 dark:text-slate-300">
+                                    <li><strong>Tipo:</strong> Intermedia</li>
+                                    <li><strong>Alternativas:</strong> 5</li>
+                                    <li><strong>Tiempo:</strong> 20 segundos</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold text-sm text-slate-900 dark:text-white">Nivel 3</span>
+                                    <span class="px-2.5 py-0.5 bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs font-bold rounded-full">300 pts</span>
+                                </div>
+                                <ul class="text-xs space-y-1 text-slate-600 dark:text-slate-300">
+                                    <li><strong>Tipo:</strong> Intermedia-alta</li>
+                                    <li><strong>Alternativas:</strong> 5</li>
+                                    <li><strong>Tiempo:</strong> 25 segundos</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold text-sm text-slate-900 dark:text-white">Nivel 4</span>
+                                    <span class="px-2.5 py-0.5 bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs font-bold rounded-full">400 pts</span>
+                                </div>
+                                <ul class="text-xs space-y-1 text-slate-600 dark:text-slate-300">
+                                    <li><strong>Tipo:</strong> Caso clínico</li>
+                                    <li><strong>Alternativas:</strong> 5</li>
+                                    <li><strong>Tiempo:</strong> 40 segundos</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold text-sm text-slate-900 dark:text-white">Nivel 5</span>
+                                    <span class="px-2.5 py-0.5 bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs font-bold rounded-full">500 pts</span>
+                                </div>
+                                <ul class="text-xs space-y-1 text-slate-600 dark:text-slate-300">
+                                    <li><strong>Tipo:</strong> Caso clínico complejo</li>
+                                    <li><strong>Alternativas:</strong> 7-8</li>
+                                    <li><strong>Tiempo:</strong> 60 segundos</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold text-sm text-slate-900 dark:text-white">Nivel 6</span>
+                                    <span class="px-2.5 py-0.5 bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs font-bold rounded-full">600 pts</span>
+                                </div>
+                                <ul class="text-xs space-y-1 text-slate-600 dark:text-slate-300">
+                                    <li><strong>Tipo:</strong> Alta dificultad / Abierta</li>
+                                    <li><strong>Alternativas:</strong> 7-8 u abierta</li>
+                                    <li><strong>Tiempo:</strong> 90 segundos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANEXO II -->
+                    <div id="anexo-2" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                        <h4 class="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-4 flex items-center">
+                            <i class="fa-solid fa-chart-simple mr-2"></i> ANEXO II: RESUMEN DE PUNTUACIÓN
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-indigo-50 dark:bg-slate-900 text-indigo-900 dark:text-indigo-300 border-b border-indigo-200 dark:border-slate-700">
+                                        <th class="p-3 font-bold">Valor de la casilla</th>
+                                        <th class="p-3 font-bold">Respuesta correcta</th>
+                                        <th class="p-3 font-bold">Respuesta incorrecta / sin respuesta</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                    <tr>
+                                        <td class="p-3 font-bold">100 puntos</td>
+                                        <td class="p-3 text-emerald-600 font-bold">+100</td>
+                                        <td class="p-3 text-rose-600 font-bold">-100</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-bold">200 puntos</td>
+                                        <td class="p-3 text-emerald-600 font-bold">+200</td>
+                                        <td class="p-3 text-rose-600 font-bold">-200</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-bold">300 puntos</td>
+                                        <td class="p-3 text-emerald-600 font-bold">+300</td>
+                                        <td class="p-3 text-rose-600 font-bold">-300</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-bold">400 puntos</td>
+                                        <td class="p-3 text-emerald-600 font-bold">+400</td>
+                                        <td class="p-3 text-rose-600 font-bold">-400</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-bold">500 puntos</td>
+                                        <td class="p-3 text-emerald-600 font-bold">+500</td>
+                                        <td class="p-3 text-rose-600 font-bold">-500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-bold">600 puntos</td>
+                                        <td class="p-3 text-emerald-600 font-bold">+600</td>
+                                        <td class="p-3 text-rose-600 font-bold">-600</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="mt-4 text-xs italic text-slate-500 dark:text-slate-400">* No existe una puntuación mínima de cero puntos. Los grupos podrán mantener puntuaciones negativas durante el desarrollo de la competencia.</p>
+                    </div>
+
+                    <!-- ANEXO III -->
+                    <div id="anexo-3" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                        <h4 class="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-4 flex items-center">
+                            <i class="fa-solid fa-timeline mr-2"></i> ANEXO III: ORDEN GENERAL DE LA COMPETENCIA
+                        </h4>
+                        <ol class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">1</span><span>Se realizará la ruleta virtual para determinar el orden inicial de participación.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">2</span><span>Los grupos recibirán su posición de turno según el resultado obtenido en la ruleta.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">3</span><span>El primer grupo seleccionará una casilla disponible del tablero.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">4</span><span>El moderador realizará la lectura completa de la pregunta y sus alternativas correspondientes.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">5</span><span>Se iniciará el cronómetro según el tiempo establecido para el valor de la pregunta seleccionada.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">6</span><span>El grupo participante realizará la deliberación interna entre sus integrantes.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">7</span><span>El grupo comunicará una única respuesta oficial.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">8</span><span>El moderador determinará si la respuesta es correcta o incorrecta.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">9</span><span>Se realizará la actualización del marcador correspondiente.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">10</span><span>Se verificará si existe alguna condición de victoria o eliminación automática.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">11</span><span>En caso de no producirse ninguna condición de finalización, continuará el turno del siguiente grupo según el orden establecido.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">12</span><span>El procedimiento continuará hasta victoria automática, eliminación o agotamiento del tablero.</span></li>
+                            <li class="flex items-start space-x-3"><span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-600 font-bold flex items-center justify-center shrink-0 text-xs">13</span><span>Si al finalizar existe un empate que afecte una posición, se realizará la Trivia Bala como desempate.</span></li>
+                        </ol>
+                    </div>
+
+                    <!-- ANEXO IV -->
+                    <div id="anexo-4" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                        <h4 class="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-4 flex items-center">
+                            <i class="fa-solid fa-bolt-lightning mr-2"></i> ANEXO IV: TRIVIA BALA (RESUMEN)
+                        </h4>
+                        <div class="space-y-4 text-sm text-slate-600 dark:text-slate-300">
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <h5 class="font-bold text-slate-900 dark:text-white mb-2">Banco y Cursos Participantes</h5>
+                                <p class="text-xs mb-2">Cinco preguntas destinadas para el desempate basadas en los cursos:</p>
+                                <ol class="list-decimal pl-5 text-xs space-y-1 font-medium">
+                                    <li>Anatomía</li>
+                                    <li>Fisiología</li>
+                                    <li>Bioquímica</li>
+                                    <li>Primeros Auxilios y Emergencias</li>
+                                    <li>Inmunología</li>
+                                </ol>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <h5 class="font-bold text-slate-900 dark:text-white mb-2">Selección y Desarrollo</h5>
+                                <ul class="list-disc pl-5 text-xs space-y-1">
+                                    <li>Cara o sello previo: ganador selecciona dos cursos, perdedor selecciona uno.</li>
+                                    <li>Primera activación válida tiene derecho a responder.</li>
+                                    <li>Respuesta correcta: <strong class="text-emerald-600">+1 punto</strong> | Respuesta incorrecta: <strong class="text-rose-600">-1 punto</strong>.</li>
+                                    <li>Demora injustificada tras activar: <strong class="text-rose-600">-1 punto</strong>.</li>
+                                    <li>Si ningún grupo responde en 10s adicionales: grupo que seleccionó recibe <strong class="text-rose-600">-1 punto</strong> y el contrario <strong class="text-emerald-600">+1 punto</strong>.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANEXO V -->
+                    <div id="anexo-5" class="article-section bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-8 shadow-sm">
+                        <h4 class="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-4 flex items-center">
+                            <i class="fa-solid fa-star mr-2"></i> ANEXO V: PRINCIPIOS BÁSICOS DE LA COMPETENCIA
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                                <h5 class="font-bold text-slate-900 dark:text-white mb-1 flex items-center"><i class="fa-solid fa-book-open text-indigo-500 mr-2"></i> Conocimiento</h5>
+                                <p class="text-xs text-slate-600 dark:text-slate-300">Las preguntas deberán estar relacionadas con los contenidos académicos previamente establecidos para cada curso.</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                                <h5 class="font-bold text-slate-900 dark:text-white mb-1 flex items-center"><i class="fa-solid fa-graduation-cap text-indigo-500 mr-2"></i> Preparación</h5>
+                                <p class="text-xs text-slate-600 dark:text-slate-300">El resultado de cada grupo dependerá principalmente del estudio, preparación y dominio de los temas evaluados.</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                                <h5 class="font-bold text-slate-900 dark:text-white mb-1 flex items-center"><i class="fa-solid fa-chart-line text-indigo-500 mr-2"></i> Competencia</h5>
+                                <p class="text-xs text-slate-600 dark:text-slate-300">El sistema de puntuación permitirá que los grupos puedan avanzar o disminuir su marcador durante la actividad.</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700">
+                                <h5 class="font-bold text-slate-900 dark:text-white mb-1 flex items-center"><i class="fa-solid fa-scale-balanced text-indigo-500 mr-2"></i> Imparcialidad</h5>
+                                <p class="text-xs text-slate-600 dark:text-slate-300">Las reglas establecidas deberán aplicarse de manera igualitaria para todos los grupos participantes.</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 sm:col-span-2 lg:col-span-2">
+                                <h5 class="font-bold text-slate-900 dark:text-white mb-1 flex items-center"><i class="fa-solid fa-hands-holding-child text-indigo-500 mr-2"></i> Respeto</h5>
+                                <p class="text-xs text-slate-600 dark:text-slate-300">La competencia busca promover un ambiente académico de exigencia y aprendizaje, evitando que la rivalidad se convierta en conflictos personales.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DISPOSICIÓN FINAL Y CIERRE -->
+                    <div id="disposicion-final" class="article-section bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                        <h4 class="text-lg font-bold text-indigo-300 mb-3 flex items-center">
+                            <i class="fa-solid fa-signature mr-2"></i> DISPOSICIÓN FINAL Y FIRMA
+                        </h4>
+                        <p class="text-sm leading-relaxed mb-6 text-indigo-100">
+                            El presente reglamento constituye la norma de referencia para el desarrollo de la <strong>Trivia General Intergrupal 2026-II</strong>. Todos los participantes deberán conocer las disposiciones establecidas antes de iniciar la competencia. La participación implica el compromiso de respetar el sistema de evaluación, las reglas y las decisiones adoptadas.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-4 border-t border-indigo-800 text-xs text-indigo-200 gap-4">
+                            <div>
+                                <span class="block font-semibold text-white text-sm">Moderador General: Valhir</span>
+                                <span>Trivia General Intergrupal 2026-II</span>
+                            </div>
+                            <div class="bg-indigo-800/60 px-4 py-2 rounded-xl border border-indigo-700/50">
+                                <span class="block font-semibold text-white">Grupos Participantes</span>
+                                <span>Grupo A • Grupo B • Grupo C • Grupo D</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
+            <p>Reglamento Oficial de la Trivia General Intergrupal 2026-II &copy; Todos los derechos reservados.</p>
+            <p>Diseñado con interfaz interactiva, buscador dinámico y modo oscuro.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Toggle Dark Mode
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Check user preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Mobile Sidebar Toggle
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebarClose = document.getElementById('sidebar-close');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        sidebarClose.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+        });
+
+        // Close sidebar when clicking nav items on mobile
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            });
+        });
+
+        // Global Search Functionality
+        const globalSearch = document.getElementById('global-search');
+        const mobileSearch = document.getElementById('mobile-search');
+        const searchAlert = document.getElementById('search-alert');
+        const searchCountText = document.getElementById('search-count-text');
+        const clearSearchBtn = document.getElementById('clear-search');
+        const articleItems = document.querySelectorAll('.article-item');
+        const articleSections = document.querySelectorAll('.article-section');
+
+        function handleSearch(query) {
+            const term = query.toLowerCase().trim();
+            if (!term) {
+                searchAlert.classList.add('hidden');
+                articleItems.forEach(el => el.style.display = 'block');
+                articleSections.forEach(el => el.style.display = 'block');
+                return;
+            }
+
+            let matchCount = 0;
+            articleItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const keywords = item.getAttribute('data-keywords') || '';
+                if (text.includes(term) || keywords.includes(term)) {
+                    item.style.display = 'block';
+                    matchCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Hide sections if all items inside are hidden
+            articleSections.forEach(section => {
+                const visibleItems = section.querySelectorAll('.article-item[style*="display: block"], .article-item:not([style*="display: none"])');
+                // If section has annexes or title matching
+                const sectionText = section.textContent.toLowerCase();
+                if (sectionText.includes(term) || visibleItems.length > 0) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            searchAlert.classList.remove('hidden');
+            searchCountText.textContent = `Resultados para "${query}": ${matchCount} elementos encontrados.`;
+        }
+
+        globalSearch.addEventListener('input', (e) => {
+            mobileSearch.value = e.target.value;
+            handleSearch(e.target.value);
+        });
+
+        mobileSearch.addEventListener('input', (e) => {
+            globalSearch.value = e.target.value;
+            handleSearch(e.target.value);
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            globalSearch.value = '';
+            mobileSearch.value = '';
+            handleSearch('');
+        });
+
+        // Active Navigation Highlight on Scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navItems.forEach(nav => {
+                        nav.classList.remove('bg-indigo-50', 'dark:bg-slate-700/50', 'text-indigo-600', 'dark:text-indigo-400', 'font-semibold');
+                        if (nav.getAttribute('href') === `#${id}`) {
+                            nav.classList.add('bg-indigo-50', 'dark:bg-slate-700/50', 'text-indigo-600', 'dark:text-indigo-400', 'font-semibold');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        articleSections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
